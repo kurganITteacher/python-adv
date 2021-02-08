@@ -1,0 +1,2 @@
+1. Подробно изучить и выполнить все примеры из https://realpython.com/introduction-to-python-generators/
+2. Создать генератор случайных слов из текста.
