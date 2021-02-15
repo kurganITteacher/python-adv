@@ -1,0 +1,2 @@
+1. Изучить и выполнить код (https://realpython.com/primer-on-python-decorators/)
+2.
