@@ -18,6 +18,8 @@ RUN apk update && \
         py3-requests && \
     rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
+#RUN pip3 install numpy pillow
+
 RUN mkdir -p "$KPK_BIN" \
     "$KPK_DATA"
 

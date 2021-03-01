@@ -1,0 +1,5 @@
+1. Установить Ubuntu Server (18.04 или 20.04) в VirtualBox
+2. Установить docker в сервер. Настроить его (https://docs.docker.com/engine/install/linux-postinstall/)
+3. Собрать docker-образ и запустить его.
+4. Запустить python-код в образе.
+5. Попробовать создать свои docker-файлы для pillow (numpy через pip3 ставим, если будут проблемы).
