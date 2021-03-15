@@ -1,3 +1,4 @@
+import os
 import re
 
 import requests
@@ -11,3 +12,5 @@ content = response.content.decode(encoding=response.encoding)
 
 parsed = RE_XLS_FILE.findall(content)
 print(*parsed, sep='\n\n')
+
+# KPK_DATA = os.environ.get('KPK_DATA')
