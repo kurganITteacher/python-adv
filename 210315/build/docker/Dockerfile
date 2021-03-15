@@ -14,7 +14,7 @@ RUN apk update && \
     apk add --no-cache \
         sudo \
         python3 \
-        pip3 && \
+        py3-pip && \
     rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
 RUN pip3 install django==2.2
@@ -28,6 +28,6 @@ WORKDIR ${workdir}
 
 VOLUME $KPK_DATA
 
-EXPOSE 80/tcp
+EXPOSE 8000/tcp
 
 CMD "run.sh"
