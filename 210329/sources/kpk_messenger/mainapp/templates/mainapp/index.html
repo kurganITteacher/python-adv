@@ -5,6 +5,12 @@
     <title>KPK Messenger</title>
 </head>
 <body>
+{% if user.is_authenticated %}
+<div>
+    <span>{{ user.username }}</span>
+    <a href="{% url 'auth:logout' %}">logout</a>
+</div>
+{% endif %}
 <h1>Привет от КПК!</h1>
 </body>
 </html>
