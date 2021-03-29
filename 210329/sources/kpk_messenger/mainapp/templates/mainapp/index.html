@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>KPK Messenger</title>
+    <title>{{ page_title|capfirst }}</title>
 </head>
 <body>
 {% if user.is_authenticated %}
@@ -11,6 +11,17 @@
     <a href="{% url 'auth:logout' %}">logout</a>
 </div>
 {% endif %}
-<h1>Привет от КПК!</h1>
+<h3>Активные диалоги</h3>
+<div class="dialogues-list">
+    <ul>
+        {% for item in dialogues %}
+            <li>
+                <a href="#" style="text-decoration: none;">
+                    {{ item.dialog.created }} - {{ item.dialog.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 </body>
 </html>

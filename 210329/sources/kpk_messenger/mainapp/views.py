@@ -4,4 +4,10 @@ from django.shortcuts import render
 
 @login_required
 def index(request):
-    return render(request, 'mainapp/index.html')
+    dialogues = request.user.dialogs.all()
+    context = {
+        'page_title': 'диалоги',
+        'dialogues': dialogues,
+    }
+
+    return render(request, 'mainapp/index.html', context)
