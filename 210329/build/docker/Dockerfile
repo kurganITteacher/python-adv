@@ -17,7 +17,9 @@ RUN apk update && \
         py3-pip && \
     rm -rf /var/cache/apk/* /var/tmp/* /tmp/*
 
-RUN pip3 install django==2.2
+RUN pip3 install \
+    django==2.2 \
+    django-debug-toolbar
 
 RUN mkdir -p "$KPK_BIN" \
     "$KPK_DATA"
