@@ -16,7 +16,7 @@
     <ul>
         {% for item in dialogues %}
             <li>
-                <a href="{% url 'main:show_dialogue' item.dialog_id %}"
+                <a href="{% url 'main:show_dialog' item.dialog_id %}"
                    style="text-decoration: none;">
                     {{ item.dialog.created }} - {{ item.dialog.name }}
                 </a>

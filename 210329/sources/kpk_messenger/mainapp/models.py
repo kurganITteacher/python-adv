@@ -9,7 +9,7 @@ class Dialog(models.Model):
     name = models.CharField(verbose_name='имя', max_length=64, blank=True)
 
     def __str__(self):
-        result = f'{self.created}'
+        result = f'{self.created.strftime("%Y.%m.%d %H:%M")}'
         if self.name:
             result += f' ({self.name})'
         return result
@@ -63,4 +63,5 @@ class Message(models.Model):
     class Meta:
         verbose_name = 'сообщение'
         verbose_name_plural = 'сообщения'
-        ordering = ['sender', '-created']
+        # ordering = ['sender', '-created']
+        ordering = ['-created']
