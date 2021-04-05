@@ -6,7 +6,7 @@ from mainapp.models import Dialog, DialogMemebers, Message
 
 @login_required
 def index(request):
-    dialogues = request.user.dialogs.all()
+    dialogues = request.user.dialogs.select_related('dialog').all()
     context = {
         'page_title': 'диалоги',
         'dialogues': dialogues,
@@ -18,16 +18,10 @@ def index(request):
 def show_dialog(request, dialog_pk):
     dialog = get_object_or_404(Dialog, pk=dialog_pk)
     _dialog_members = DialogMemebers.objects.filter(dialog=dialog)
-        # exclude(member=request.user)
-        # exclude(member_id=request.user.pk)
-    dialog_members = _dialog_members.exclude(member=request.user).\
+    dialog_members = _dialog_members.exclude(member=request.user). \
         select_related('member')
-    dialog_messages = Message.objects.filter(sender__in=_dialog_members).\
+    dialog_messages = Message.objects.filter(sender__in=_dialog_members). \
         select_related('sender__member')
-
-    # print(dialog)
-    # print(dialog_members)
-    # print(dialog_messages)
 
     context = {
         'dialog': dialog,
