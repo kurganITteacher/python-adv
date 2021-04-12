@@ -13,7 +13,7 @@
     <ul>
         {% for item in new_interlocutors %}
             <li>
-                <a href="#"
+                <a href="{% url 'main:user_dialog_create' item.pk %}"
                    style="text-decoration: none;">
                     {{ item.username }}
                 </a>

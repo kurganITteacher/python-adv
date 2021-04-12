@@ -24,7 +24,8 @@
         <li>
             <a href="{% url 'main:dialog_show' item.dialog_id %}"
                style="text-decoration: none;">
-                {{ item.dialog.created }} - {{ item.dialog.name }}
+                {{ item.dialog.created }}
+                {% if item.dialog.name %} - {{ item.dialog.name }}{% endif %}
             </a>
         </li>
         {% endfor %}

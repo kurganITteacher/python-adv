@@ -9,17 +9,11 @@
     <a href="{% url 'main:index' %}">main</a>
 </div>
 <h3>Диалог: {{ dialog }}</h3>
-<div class="dialog-members">
-    <ul>
-        {% for item in dialog_members %}
-            <li>
-                <a href="#"
-                   style="text-decoration: none;">
-                    {{ item.member.username }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+<div class="message-create">
+    <a href="{#% url 'main:dialog_message_create' dialog.pk %#}"
+       style="text-decoration: none;">
+        сообщение
+    </a>
 </div>
 <div class="dialog-messages">
     <ul>

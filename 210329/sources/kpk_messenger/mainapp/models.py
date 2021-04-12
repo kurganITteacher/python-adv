@@ -39,7 +39,6 @@ class DialogMemebers(models.Model):
                                related_name="dialogs")
     role = models.CharField(verbose_name='роль',
                             choices=ROLE_CHOICES,
-                            # default=CREATOR,
                             max_length=64,
                             db_index=True)
 
