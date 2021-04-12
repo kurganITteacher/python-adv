@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title|capfirst }}</title>
+</head>
+<body>
+<div>
+    <a href="{% url 'main:index' %}">main</a>
+</div>
+<h3>Пользователи</h3>
+<div class="dialog-members">
+    <ul>
+        {% for item in new_interlocutors %}
+            <li>
+                <a href="#"
+                   style="text-decoration: none;">
+                    {{ item.username }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

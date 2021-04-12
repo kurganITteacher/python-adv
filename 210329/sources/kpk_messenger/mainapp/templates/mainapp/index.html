@@ -12,15 +12,21 @@
 </div>
 {% endif %}
 <h3>Активные диалоги</h3>
+<div class="dialog-create">
+    <a href="{% url 'main:dialog_create' %}"
+       style="text-decoration: none;">
+        новый диалог
+    </a>
+</div>
 <div class="dialogues-list">
     <ul>
         {% for item in dialogues %}
-            <li>
-                <a href="{% url 'main:show_dialog' item.dialog_id %}"
-                   style="text-decoration: none;">
-                    {{ item.dialog.created }} - {{ item.dialog.name }}
-                </a>
-            </li>
+        <li>
+            <a href="{% url 'main:dialog_show' item.dialog_id %}"
+               style="text-decoration: none;">
+                {{ item.dialog.created }} - {{ item.dialog.name }}
+            </a>
+        </li>
         {% endfor %}
     </ul>
 </div>
