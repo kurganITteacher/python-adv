@@ -70,3 +70,14 @@ def user_dialog_create(request, user_id):
     return HttpResponseRedirect(
         reverse('main:dialog_show', kwargs={'dialog_pk': dialog.pk})
     )
+
+
+def dialog_delete(request, pk):
+    instance = Dialog.objects.filter(pk=pk).first()
+    if not instance:
+        pass
+    else:
+        instance.delete()
+    return HttpResponseRedirect(
+        reverse('main:index')
+    )

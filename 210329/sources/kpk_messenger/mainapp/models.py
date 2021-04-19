@@ -9,9 +9,14 @@ class Dialog(models.Model):
     name = models.CharField(verbose_name='имя', max_length=64, blank=True)
 
     def __str__(self):
-        result = f'{self.created.strftime("%Y.%m.%d %H:%M")}'
-        if self.name:
-            result += f' ({self.name})'
+        _members = self.members.all().\
+            values_list('member_id', flat=True)
+        members = User.objects.filter(pk__in=_members).\
+            values_list('username', flat=True)
+        result = f'{self.created.strftime("%Y.%m.%d %H:%M")} ' \
+                 f'({" - ".join(members)})'
+        # if self.name:
+        #     result += f' ({self.name})'
         return result
 
     class Meta:

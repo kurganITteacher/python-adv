@@ -22,11 +22,18 @@
     <ul>
         {% for item in dialogues %}
         <li>
-            <a href="{% url 'main:dialog_show' item.dialog_id %}"
-               style="text-decoration: none;">
-                {{ item.dialog.created }}
-                {% if item.dialog.name %} - {{ item.dialog.name }}{% endif %}
-            </a>
+            <span class="dialog-link">
+                <a href="{% url 'main:dialog_show' item.dialog_id %}"
+                   style="text-decoration: none;">
+                    {{ item.dialog }}
+                </a>
+            </span>
+            <span class="dialog-delete">
+                <a href="{% url 'main:dialog_delete' item.dialog_id %}"
+                   style="text-decoration: none;">
+                    удалить
+                </a>
+            </span>
         </li>
         {% endfor %}
     </ul>

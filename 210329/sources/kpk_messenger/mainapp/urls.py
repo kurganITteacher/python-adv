@@ -10,4 +10,6 @@ urlpatterns = [
     path('dialog/create/', mainapp.dialog_create, name='dialog_create'),
     path('user/dialog/create/<int:user_id>/', mainapp.user_dialog_create,
          name='user_dialog_create'),
+    path('user/dialog/delete/<int:pk>/', mainapp.dialog_delete,
+         name='dialog_delete'),
 ]
