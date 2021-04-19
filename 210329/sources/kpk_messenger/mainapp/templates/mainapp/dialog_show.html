@@ -10,14 +10,14 @@
 </div>
 <h3>Диалог: {{ dialog }}</h3>
 <div class="message-create">
-    <a href="{#% url 'main:dialog_message_create' dialog.pk %#}"
+    <a href="{% url 'main:dialog_message_create' sender.id %}"
        style="text-decoration: none;">
         сообщение
     </a>
 </div>
 <div class="dialog-messages">
     <ul>
-        {% for item in dialog_messages %}
+        {% for item in dialog.get_messages %}
             <li>
                 {{ item.sender.member.username }}
                 ({{ item.created|date:"Y.m.d H:i" }}) - {{ item.text }}
