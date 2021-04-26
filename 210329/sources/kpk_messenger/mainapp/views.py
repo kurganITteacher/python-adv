@@ -103,3 +103,19 @@ class DialogMessageCreate(CreateView):
             'main:dialog_show',
             kwargs={'dialog_pk': self.object.sender.dialog_id}
         )
+
+
+def dialog_show_update(request, dialog_pk):
+    if request.is_ajax():
+        # dialog = get_object_or_404(Dialog, pk=dialog_pk)
+        dialog = Dialog.objects.filter(pk=dialog_pk).first()
+        status = False
+        new_messages = None
+        if dialog:
+            status = True
+            new_messages = dialog.get_messages_new(request.user.pk)
+            new_messages.update(read=True)
+        return JsonResponse({
+            'status': status,
+            'new_messages': new_messages,
+        })
