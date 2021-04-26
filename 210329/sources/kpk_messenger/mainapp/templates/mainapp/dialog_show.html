@@ -1,8 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ page_title|capfirst }}</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/dialog.js' %}"></script>
 </head>
 <body>
 <div>
@@ -16,9 +19,14 @@
     </a>
 </div>
 <div class="dialog-messages">
-    <ul>
-        {% for item in dialog.get_messages %}
-            <li>
+    <a href="{% url 'main:dialog_new_messages' dialog.id %}"
+       style="text-decoration: none;"
+       class="dialog-update">
+        обновить
+    </a>
+    <ul class="messages-list">
+        {% for item in dialog.get_messages_all %}
+            <li class="message-{{ item.pk }}">
                 {{ item.sender.member.username }}
                 ({{ item.created|date:"Y.m.d H:i" }}) - {{ item.text }}
             </li>
