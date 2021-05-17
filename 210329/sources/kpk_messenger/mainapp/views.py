@@ -113,9 +113,6 @@ def dialog_new_messages(request, dialog_pk):
         if dialog:
             status = True
             _new_messages = dialog.get_messages_new(request.user.pk)
-            # _new_messages.update(read=True)
-            # {{ item.sender.member.username }}
-            #                 ({{ item.created|date:"Y.m.d H:i" }}) - {{ item.text }}
             new_messages = [{'pk': el.pk,
                              'username': el.sender.member.username,
                              'created': el.created.strftime('%Y.%m.%d %H:%M'),
