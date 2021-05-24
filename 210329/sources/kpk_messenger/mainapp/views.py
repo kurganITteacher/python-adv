@@ -113,11 +113,17 @@ def dialog_new_messages(request, dialog_pk):
         if dialog:
             status = True
             _new_messages = dialog.get_messages_new(request.user.pk)
-            new_messages = [{'pk': el.pk,
-                             'username': el.sender.member.username,
-                             'created': el.created.strftime('%Y.%m.%d %H:%M'),
-                             'text': el.text}
-                            for el in _new_messages]
+            # _new_messages.update(read=True)
+            new_messages = [
+                {'pk': el.pk,
+                 'username': el.sender.member.username,
+                 'created': el.created.strftime('%Y.%m.%d %H:%M'),
+                 'text': el.text}
+                for el in _new_messages
+            ]
+            print(f'new messgaes {len(new_messages)}, read update')
+            _new_messages.update(read=True)
+
         return JsonResponse({
             'status': status,
             'new_messages': new_messages,

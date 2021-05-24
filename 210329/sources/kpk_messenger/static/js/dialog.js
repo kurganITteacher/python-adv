@@ -17,7 +17,9 @@ function messageRender(message) {
 
 window.onload = function () {
     console.log('ready');
+    // $dialogMessagesDOM = document.querySelectorAll('.dialog-messages');
     $dialogMessagesDOM = $('.dialog-messages');
+    // console.log('$dialogMessagesDOM', $dialogMessagesDOM);
     $dialogMessagesDOM.on('click', 'a.dialog-update', function (e) {
         e.preventDefault();
         $.ajax({
