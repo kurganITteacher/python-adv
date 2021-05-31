@@ -10,6 +10,9 @@ function messageRender(message) {
         messageText = message.username + " (" + message.created + ") - " + message.text;
         newMessage.innerHTML = messageText;
         let parent = $dialogMessagesDOM.find('.messages-list');
+        console.log('parent', parent);
+        //[ul.messages-list, prevObject: S.fn.init(1)]
+        console.log('newMessage', newMessage);
         parent.prepend(newMessage);
     }
 }
