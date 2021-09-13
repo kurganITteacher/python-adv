@@ -20,12 +20,12 @@ class App extends React.Component {
         };
     }
 
-    // componentDidMount() {
-    //     // call API
-    //     this.setState({
-    //         projects: projectsMock
-    //     })
-    // }
+    componentDidMount() {
+        // call API
+        this.setState({
+            projects: projectsMock
+        })
+    }
 
     render() {
         console.log('state', this.state);
@@ -34,8 +34,6 @@ class App extends React.Component {
                 <Header/>
                 Dashboard
                 <ProjectList projects={this.state.projects}/>
-                {/*ProjectList(this.state.projects)*/}
-                {/*ProjectList(projects=this.state.projects)*/}
                 <Footer/>
             </div>
         )
@@ -43,4 +41,3 @@ class App extends React.Component {
 }
 
 export default App;
-// jsx -> js + ...

@@ -15,7 +15,7 @@ const Project = (project) => {
 // const ProjectList = (props) => {
 function ProjectList(props) {
     console.log('props:', props);
-    // console.log('projects:', props.projects);
+    console.log('projects:', props.projects);
     return (
         <table className={"project-list"}>
             <thead>
@@ -25,7 +25,8 @@ function ProjectList(props) {
             </tr>
             </thead>
             <tbody>
-            {[].map(Project)}
+            {props.projects.map(Project)}
+            {/*{props.projects.map((project) => <Project key={project.name} project={project}/>)}*/}
             </tbody>
         </table>
     )
