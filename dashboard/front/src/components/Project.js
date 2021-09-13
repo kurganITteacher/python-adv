@@ -1,4 +1,4 @@
-const Project = (project) => {
+const Project = ({project}) => {
     console.log('project:', project);
     return (
         <tr className="project-row">
@@ -12,10 +12,8 @@ const Project = (project) => {
     )
 }
 
-// const ProjectList = (props) => {
-function ProjectList(props) {
-    console.log('props:', props);
-    console.log('projects:', props.projects);
+const ProjectList = ({projects}) => {
+    console.log('projects:', projects);
     return (
         <table className={"project-list"}>
             <thead>
@@ -25,8 +23,8 @@ function ProjectList(props) {
             </tr>
             </thead>
             <tbody>
-            {props.projects.map(Project)}
-            {/*{props.projects.map((project) => <Project key={project.name} project={project}/>)}*/}
+            {/*{projects.map(Project)}*/}
+            {projects.map((project) => <Project key={project.name} project={project}/>)}
             </tbody>
         </table>
     )
