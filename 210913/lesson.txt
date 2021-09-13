@@ -16,3 +16,10 @@ virtual DOM -> fast rendering
 
 this -> context !!!
 
+map(Project, projects)
+
+projects.map(Project)
+
+this.state && this.state.projects || []
+this.state and this.state.projects or []
+
