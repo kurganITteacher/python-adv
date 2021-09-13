@@ -1,0 +1,18 @@
+class -> instance -> state
+function -> no state
+
+single data flow
+
+ONLY ONE OBJECT!!!
+
+                       MAIN COMPONENT (OBJECT) - all state
+ data                            /              \
+   V             component 2 (function)     component 3(function)
+                     /             \                            \                           ^
+       component 2.1 (function)   component 2.2 (function)      component 3.1 (function)  events
+
+
+virtual DOM -> fast rendering
+
+this -> context !!!
+
