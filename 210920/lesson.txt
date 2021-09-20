@@ -88,4 +88,38 @@ my_sum(1, 2, 3)
 
 *args = 1, 2, 3
 print(arg)
+================================================================
+
+REST API
+
+const projectsMock = [
+    {'name': "Project X", 'created': "2021-09-02"},
+    {'name': "Project Alpha", 'created': "2021-09-07"}
+];
+
+================================================================
+Function Based Views (FBV)
+
+
+def projects_view(request):
+    projects = Project.objects.all()
+    return render(request, 'mainapp/projects.html', {'projects': projects})
+
+
+def project_tasks_view(request):
+    project_tasks = ProjectTask.objects.all()
+    return render(request, 'mainapp/project_tasks.html', {'project_tasks': project_tasks})
+
+
+Class Based Views (CBV)
+
+
+class ProjectList(ListView):
+    model = Project
+
+
+class ProjectTaskList(ListView):
+    model = ProjectTask
+
+
 

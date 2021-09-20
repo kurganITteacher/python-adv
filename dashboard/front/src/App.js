@@ -23,7 +23,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        // call API
+        // call rest API
         this.setState({
             projects: projectsMock
         })
