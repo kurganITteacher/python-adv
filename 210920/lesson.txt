@@ -122,4 +122,62 @@ class ProjectTaskList(ListView):
     model = ProjectTask
 
 
+ListView
+CreateView  C
+DetailView  R
+UpdateView  U
+DeleteView  D
 
+CRUD
+
+API -> CBV -> 15 classes -> 15 url records
+
+DRF -> ViewSet -> CBV(CBV) -> http methods:
+    GET -> ListView, DetailView
+    POST -> CreateView
+    PUT -> UpdateView
+    PATCH -> UpdateView
+    DELETE -> DeleteView
+/project/
+/project/1/
+
+
+class ProjectViewSet():
+    pass
+
+
+class ProjectTaskViewSet():
+    pass
+
+
+class UserViewSet():
+    pass
+
+
+API response format??? -> json, xml
+
+projects = Project.objects.all() -> json ???
+
+json <=> dict of simple python objects: str, int, float, list, dict
+
+python objects -> dict of simple python objects: str, int, float, list, dict
+               ?
+python objects -> text -> bytes -> transfer by web
+            serialization -> serial of letters
+serial of letters -> deserialization -> python object, JSON object
+
+
+class ProjectSerializer():
+    pass
+
+
+class ProjectTaskSerializer():
+    pass
+
+
+class UserSerializer():
+    pass
+
+
+django forms: ModelForm, Form -> python model class -> html markup
+django serializer: ModelSerializer, Serializer
