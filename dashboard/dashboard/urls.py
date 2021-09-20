@@ -18,8 +18,11 @@ from django.urls import path
 import mainapp.views as mainapp
 
 urlpatterns = [
-    path('',  mainapp.projects_view),
-    path('project/tasks/',  mainapp.project_tasks_view),
+    # path('',  mainapp.projects_view),
+    # path('project/tasks/',  mainapp.project_tasks_view),
+
+    path('',  mainapp.ProjectList.as_view()),
+    path('project/tasks/',  mainapp.ProjectTaskList.as_view()),
 
     path('admin/', admin.site.urls),
 ]
