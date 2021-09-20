@@ -1,0 +1,91 @@
+// react -> library
+// components: with state and without state
+// component with state: OOP -> class
+// component without state: functional programming -> function
+
+// one way dataflow
+
+// main component
+class App extends react.Component {
+    constructor(props) {
+        super(props); //?
+        // set initial state
+        this.state = {
+            devs: [],
+            projects: [],
+            tasks: []
+        }
+    }
+
+    return() {
+    }
+}
+
+// some component
+// function ProjectList(projects) {
+// const ProjectList = (*projects) => {
+// {projects} = {projects: [...], ...}
+// [projects] = [[...]]
+const ProjectList = ({projects}) => {
+    // console.log(this);
+    // wait: typeof projects -> Array.prototype.map()
+    // real: typeof projects -> JSON -> props -> {projects: [], ...}
+    // solve: projects.projects -> Array
+    console.log(projects);
+
+    return (
+        {projects.map((project)  => <Project project={project}/>)}
+    )
+}
+
+# parallel assignment
+a, b = 4, 'hello'
+a, b = [4, 'hello']
+[a, b] = [4, 'hello']
+a, b, c = 4, 'hello', 777
+print(a)
+print(b)
+
+
+def my_sum(a, b):
+    return a + b
+
+
+print(my_sum(5, 3))  # 8
+
+
+def my_sum(a, b, c=0):
+    return a + b + c
+
+
+print(my_sum(5, 3, 4))  # 12
+
+
+# method overload, method override
+
+
+def my_sum(a, b, c=0, d=0):
+    return a + b + c + d
+
+
+def my_sum(*args):
+    return sum(args)
+
+
+def my_sum_2(args):
+    return sum(args)
+
+
+my_sum(1, 2, 3)  # a
+my_sum([1, 2, 3])  # b
+
+my_sum_2(1, 2, 3)  # c
+my_sum_2([1, 2, 3])  # d
+
+a, d
+
+my_sum(1, 2, 3)
+
+*args = 1, 2, 3
+print(arg)
+

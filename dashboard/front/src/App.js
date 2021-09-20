@@ -2,6 +2,8 @@ import React from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ProjectList from "./components/Project";
+// import {ProjectList} from "./components/Project";
+// import {ProjectList, ProjectListExt} from "./components/Project";
 
 
 const projectsMock = [
