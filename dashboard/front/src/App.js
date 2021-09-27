@@ -1,5 +1,7 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import {BrowserRouter as Router, NavLink, Route} from 'react-router-dom';
+import {Container, Nav, Navbar} from 'react-bootstrap';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ProjectList from "./components/Project";
@@ -124,22 +126,24 @@ class App extends React.Component {
                 Dashboard
                 <Router>
                     <Header/>
-                    <navbar>
-                        <ul>
-                            <li>
-                                <Link to={"/"}>Main</Link>
-                            </li>
-                            <li>
-                                <Link to={"/users"}>Users</Link>
-                            </li>
-                            <li>
-                                <Link to={"/projects"}>Projects</Link>
-                            </li>
-                            <li>
-                                <Link to={"/tasks"}>Tasks</Link>
-                            </li>
-                        </ul>
-                    </navbar>
+                    <Navbar bg="dark" variant="dark">
+                        <Container>
+                            <Nav className="me-auto">
+                                <Nav.Link>
+                                    <NavLink to={"/"}>Main</NavLink>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <NavLink to={"/users"}>Users</NavLink>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <NavLink to={"/projects"}>Projects</NavLink>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <NavLink to={"/tasks"}>Tasks</NavLink>
+                                </Nav.Link>
+                            </Nav>
+                        </Container>
+                    </Navbar>
 
                     <Route exact path="/">
                         <Main/>

@@ -8,3 +8,10 @@ Link
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 navbar -> samples from w3school
+
+https://react-bootstrap.github.io/
+
+npm install react-bootstrap
+// npm install bootstrap
+
+
