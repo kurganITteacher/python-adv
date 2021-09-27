@@ -7,7 +7,7 @@ Link
 
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-navbar -> samples from w3school
+navbar -> samples from w3schools
 
 https://react-bootstrap.github.io/
 
