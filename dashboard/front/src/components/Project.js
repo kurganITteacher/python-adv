@@ -3,6 +3,9 @@ const Project = ({project}) => {
     return (
         <tr className="project-row">
             <td>
+                {project.id}
+            </td>
+            <td>
                 {project.name}
             </td>
             <td>
@@ -18,33 +21,17 @@ const ProjectList = ({projects}) => {
         <table className={"project-list"}>
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Created</th>
+                <th>id</th>
+                <th>name</th>
+                <th>created</th>
             </tr>
             </thead>
             <tbody>
-            {projects.map((project) => <Project key={project.name} project={project}/>)}
-            </tbody>
-        </table>
-    )
-}
-
-const ProjectListExt = ({projects}) => {
-    console.log('projects:', projects);
-    return (
-        <table className={"project-list"}>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Created</th>
-            </tr>
-            </thead>
-            <tbody>
-            {projects.map((project) => <Project key={project.name} project={project}/>)}
+            {projects.map((project) => <Project key={project.id} project={project}/>)}
             </tbody>
         </table>
     )
 }
 
 export default ProjectList;
-// export {ProjectList, ProjectListExt};
+

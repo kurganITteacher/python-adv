@@ -1,0 +1,13 @@
+GET http://localhost:8000/api/projects/
+Accept: application/json
+
+<> 2021-09-27T100623.200.json
+
+###
+GET http://localhost:8000/api/project-tasks/
+Accept: application/json
+
+###
+###
+GET http://localhost:8000/api/users/
+Accept: application/json
