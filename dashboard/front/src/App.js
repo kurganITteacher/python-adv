@@ -1,11 +1,12 @@
 import React from 'react';
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ProjectList from "./components/Project";
 import UserList from "./components/User";
 import TaskList from "./components/Task";
-// import {ProjectList} from "./components/Project";
-// import {ProjectList, ProjectListExt} from "./components/Project";
+import Main from "./components/Main";
+
 
 const usersMock = [
     {
@@ -120,11 +121,39 @@ class App extends React.Component {
         console.log('state', this.state);
         return (
             <div>
-                <Header/>
                 Dashboard
-                <UserList users={this.state.users}/>
-                <ProjectList projects={this.state.projects}/>
-                <TaskList tasks={this.state.tasks}/>
+                <Router>
+                    <Header/>
+                    <navbar>
+                        <ul>
+                            <li>
+                                <Link to={"/"}>Main</Link>
+                            </li>
+                            <li>
+                                <Link to={"/users"}>Users</Link>
+                            </li>
+                            <li>
+                                <Link to={"/projects"}>Projects</Link>
+                            </li>
+                            <li>
+                                <Link to={"/tasks"}>Tasks</Link>
+                            </li>
+                        </ul>
+                    </navbar>
+
+                    <Route exact path="/">
+                        <Main/>
+                    </Route>
+                    <Route exact path="/users">
+                        <UserList users={this.state.users}/>
+                    </Route>
+                    <Route exact path="/projects">
+                        <ProjectList projects={this.state.projects}/>
+                    </Route>
+                    <Route exact path="/tasks">
+                        <TaskList tasks={this.state.tasks}/>
+                    </Route>
+                </Router>
                 <Footer/>
             </div>
         )
