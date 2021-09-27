@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import './index.css';
 import React from 'react';
-import {BrowserRouter as Router, NavLink, Route} from 'react-router-dom';
+import {BrowserRouter as Router, NavLink as Link, Route} from 'react-router-dom';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ProjectList from "./components/Project";
@@ -120,30 +119,34 @@ class App extends React.Component {
     }
 
     render() {
-        console.log('state', this.state);
+        // console.log('state', this.state);
         return (
-            <div>
-                Dashboard
+            <div className="main">
                 <Router>
                     <Header/>
-                    <nav className="navbar navbar-default">
-                        <div className="container-fluid">
-                            <div className="navbar-header">
-                                <NavLink to={"/"}>Dashboard</NavLink>
-                            </div>
-                            <ul className="nav navbar-nav">
-                                <li>
-                                    <NavLink to={"/users"}>Users</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to={"/projects"}>Projects</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to={"/tasks"}>Tasks</NavLink>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
+                    <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                        <Link to={"/"}
+                              className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                            DashBoard
+                        </Link>
+                        <ul className="nav nav-pills">
+                            <li className="nav-item">
+                                <Link to={"/users"} className="nav-link">
+                                    Users
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={"/projects"} className="nav-link">
+                                    Projects
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={"/tasks"} className="nav-link">
+                                    Tasks
+                                </Link>
+                            </li>
+                        </ul>
+                    </header>
 
                     <Route exact path="/">
                         <Main/>
