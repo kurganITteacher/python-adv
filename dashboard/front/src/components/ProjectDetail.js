@@ -1,17 +1,32 @@
 import React from "react";
 import {useParams} from "react-router";
 
-const ProjectDetail = ({projects}) => {
-    // let id = useParams();
+const ProjectDetail = ({projects, users}) => {
     let {id} = useParams();
-    // console.log('id:', id, typeof id, typeof parseInt(id), typeof +id);
-    // console.log('projects:', projects);
-    // let project = projects.filter((item) => item.id == id)[0];
     let project = projects.filter((item) => item.id === +id)[0];
-    console.log('this project:', project);
+    // project = filter(projects, lambda item: item.id == int(id));
+    // console.log('this project:', project);
+    // console.log('users', users);
+    let owner = users.find((item) => project.owner === item.id);
+    // console.log('owner', owner);
+    let members = users.filter((item) => project.members.includes(item.id));
+    // console.log('members', members);
 
     return (
-        <h3>Project</h3>
+        <div className={"project-detail"}>
+            <h2>Project: {project.name}</h2>
+            <h3>Owner: {owner.username}</h3>
+            <p>Created: {project.created}</p>
+            <p>Updated: {project.updated}</p>
+            <h4>Members:</h4>
+            <ul>
+                {members.map((item) => (
+                    <li key={item.id}>{item.username}</li>
+                ))}
+            </ul>
+            <p>Description: {project.desc}</p>
+        </div>
+
     )
 }
 

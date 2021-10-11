@@ -135,7 +135,8 @@ class App extends React.Component {
                         <ProjectList projects={this.state.projects}/>
                     </Route>
                     <Route exact path="/projects/detail/:id">
-                        <ProjectDetail projects={this.state.projects}/>
+                        <ProjectDetail projects={this.state.projects}
+                                       users={this.state.users}/>
                     </Route>
                     <Route exact path="/tasks">
                         <TaskList tasks={this.state.tasks}/>
