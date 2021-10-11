@@ -1,0 +1,8 @@
+1. link with param
+
+function myFunc(id) {
+    console.log(id);
+}
+
+<button onClick=myFunc(this)>
+</button>

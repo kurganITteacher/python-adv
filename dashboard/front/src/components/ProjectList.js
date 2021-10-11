@@ -1,3 +1,6 @@
+import {NavLink as Link} from "react-router-dom";
+import React from "react";
+
 const Project = ({project}) => {
     // console.log('project:', project);
     return (
@@ -6,10 +9,17 @@ const Project = ({project}) => {
                 {project.id}
             </td>
             <td>
-                {project.name}
+                <Link to={`/projects/detail/${project.id}`} className="nav-link">
+                        {project.name}
+                </Link>
             </td>
             <td>
                 {project.created}
+            </td>
+            <td>
+                <Link to={`/projects/delete/${project.id}`} className="nav-link">
+                        delete
+                </Link>
             </td>
         </tr>
     )
@@ -26,6 +36,7 @@ const ProjectList = ({projects}) => {
                     <th>id</th>
                     <th>name</th>
                     <th>created</th>
+                    <th>actions</th>
                 </tr>
                 </thead>
                 <tbody>

@@ -1,11 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import {BrowserRouter as Router, NavLink as Link, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import ProjectList from "./components/Project";
-import UserList from "./components/User";
-import TaskList from "./components/Task";
+import ProjectList from "./components/ProjectList";
+import ProjectDetail from "./components/ProjectDetail";
+import UserList from "./components/UserList";
+import TaskList from "./components/TaskList";
 import Main from "./components/Main";
 
 
@@ -124,30 +125,6 @@ class App extends React.Component {
             <div className="main">
                 <Router>
                     <Header/>
-                    <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-                        <Link to={"/"}
-                              className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                            DashBoard
-                        </Link>
-                        <ul className="nav nav-pills">
-                            <li className="nav-item">
-                                <Link to={"/users"} className="nav-link">
-                                    Users
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={"/projects"} className="nav-link">
-                                    Projects
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={"/tasks"} className="nav-link">
-                                    Tasks
-                                </Link>
-                            </li>
-                        </ul>
-                    </header>
-
                     <Route exact path="/">
                         <Main/>
                     </Route>
@@ -156,6 +133,9 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/projects">
                         <ProjectList projects={this.state.projects}/>
+                    </Route>
+                    <Route exact path="/projects/detail/:id">
+                        <ProjectDetail projects={this.state.projects}/>
                     </Route>
                     <Route exact path="/tasks">
                         <TaskList tasks={this.state.tasks}/>
