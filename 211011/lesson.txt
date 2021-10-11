@@ -6,3 +6,27 @@ function myFunc(id) {
 
 <button onClick=myFunc(this)>
 </button>
+
+
+npm install axios
+
+Promise
+
+https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+https://developer.mozilla.org/ru/docs/Glossary/CORS
+
+
+CSRF
+
+
+localhost:8000
+localhost:3000
+
+
+https://pypi.org/project/django-cors-headers/
+pip install django-cors-headers
+
+
+https://github.com/adamchainz/django-cors-headers
+

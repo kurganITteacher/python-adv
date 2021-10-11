@@ -8,6 +8,7 @@ import ProjectDetail from "./components/ProjectDetail";
 import UserList from "./components/UserList";
 import TaskList from "./components/TaskList";
 import Main from "./components/Main";
+import axios from "axios";
 
 
 const usersMock = [
@@ -112,6 +113,14 @@ class App extends React.Component {
 
     componentDidMount() {
         // call rest API
+        // npm install axios
+        axios
+            .get("http://localhost:8000/api/users/")
+            .then((result) => {
+                console.log('result', result)
+            })
+            .catch((error) => console.log(error));
+
         this.setState({
             users: usersMock,
             projects: projectsMock,

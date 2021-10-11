@@ -1,0 +1,5 @@
+1. Создать по крайней мере одну ссылку с параметром в проекте (лучше для всех сущностей).
+2. Почитать про промисы и сделать краткий конспект в Google Docs:
+    https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise
+3. Почитать про CORS и сделать краткий конспект в Google Docs:
+    https://developer.mozilla.org/ru/docs/Glossary/CORS
