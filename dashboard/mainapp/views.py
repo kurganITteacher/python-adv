@@ -14,7 +14,8 @@ class ProjectTaskList(ListView):
 
 
 class ProjectViewSet(ModelViewSet):
-    queryset = Project.objects.all()
+    # queryset = Project.objects.all()
+    queryset = Project.objects.filter(is_active=True)
     serializer_class = ProjectSerializer
 
 

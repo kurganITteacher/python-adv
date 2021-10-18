@@ -10,6 +10,9 @@ import TaskList from "./components/TaskList";
 import Main from "./components/Main";
 import axios from "axios";
 
+const API_URL = "http://127.0.0.1:8000";
+const getResourceURL = (suffix) => `${API_URL}/api/${suffix}/`;
+
 
 class App extends React.Component {
     constructor(props) {
@@ -24,7 +27,7 @@ class App extends React.Component {
     componentDidMount() {
         // call rest API
         axios
-            .get("http://127.0.0.1:8000/api/users/")
+            .get(getResourceURL("users"))
             .then((result) => {
                 // console.log('users result:', result)
                 this.setState({
@@ -33,7 +36,7 @@ class App extends React.Component {
             })
             .catch((error) => console.log(error));
         axios
-            .get("http://127.0.0.1:8000/api/projects/")
+            .get(getResourceURL("projects"))
             .then((result) => {
                 this.setState({
                     projects: result.data
@@ -41,7 +44,7 @@ class App extends React.Component {
             })
             .catch((error) => console.log(error));
         axios
-            .get("http://127.0.0.1:8000/api/project-tasks/")
+            .get(getResourceURL("project-tasks"))
             .then((result) => {
                 this.setState({
                     tasks: result.data

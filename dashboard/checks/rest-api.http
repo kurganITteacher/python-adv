@@ -8,6 +8,20 @@ GET http://localhost:8000/api/project-tasks/
 Accept: application/json
 
 ###
-###
 GET http://localhost:8000/api/users/
+Accept: application/json
+
+###
+POST http://localhost:8000/api/projects/
+Accept: application/json
+
+{
+    name: "project 5",
+    owner: 2,
+    desc: "Kurgan rock club site",
+    members: [1, 2]
+}
+
+###
+DELETE http://localhost:8000/api/projects/1/
 Accept: application/json

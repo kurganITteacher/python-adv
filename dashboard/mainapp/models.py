@@ -12,9 +12,16 @@ class Project(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     members = models.ManyToManyField('authapp.UserProfile')
+    is_active = models.BooleanField(default=True, db_index=True)
 
     def __str__(self):
         return f'{self.name}'
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_active = False
+        self.name = f'_{self.name}'
+        self.save()
+        return 1, {}  # to fix
 
 
 class ProjectTask(models.Model):
@@ -28,6 +35,7 @@ class ProjectTask(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.project}: {self.title}'

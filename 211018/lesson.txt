@@ -1,6 +1,125 @@
 CORS
 
 django-cors-headers
-https://pypi.org/project/django-cors-headers/
+    https://pypi.org/project/django-cors-headers/
 
-[18/Oct/2021 10:04:06,148] - Broken pipe from ('127.0.0.1', 58177)
+HTTP methods
+    https://developer.mozilla.org/ru/docs/Web/HTTP/Methods
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+# list view
+GET http://localhost:8000/api/projects/
+# detail view
+GET http://localhost:8000/api/projects/3/
+# classic django
+    POST http://localhost:8000/api/projects/3/detail/
+# delete
+# django REST
+DELETE http://localhost:8000/api/projects/3/
+        VS
+# classic django
+    POST http://localhost:8000/api/projects/3/delete/
+        OR
+    POST http://localhost:8000/api/projects/delete/3/
+
+==================================================================
+Идемпотентный
+    https://developer.mozilla.org/ru/docs/Glossary/Idempotent
+
+GET, PUT и DELETE
+
+    PATCH VS POST VS PUT
+
+http://localhost:8000/api/projects/3/ х 15 -> один и тот же результат
+
+
+POST -> create -> new DB record!!!
+
+POST http://localhost:8000/api/projects/
+# payload, JSON
+data = {
+    name: 'project 5',
+    owner: 2,
+    desc: 'Kurgan rock club site',
+    members: [1, 2]
+}
+
+
+PUT -> works with existing DB record!!!
+PUT http://localhost:8000/api/projects/
+data = {
+    name: 'project 5',
+    owner: 2,
+    desc: 'Kurgan rock club New site',
+    members: [1, 2]
+}
+
+will it work??? -> NO!!!
+PUT http://localhost:8000/api/projects/
+data = {
+    desc: 'Kurgan rock club New site'
+}
+
+
+will work!!! but seems better to use PUT
+PATCH http://localhost:8000/api/projects/
+data = {
+    name: 'project 5',
+    owner: 2,
+    desc: 'Kurgan rock club site',
+    members: [1, 2]
+}
+
+will work!!!
+PATCH http://localhost:8000/api/projects/
+data = {
+    desc: 'Kurgan rock club New site'
+}
+
+==================================================================
+###Request
+DELETE http://localhost:8000/api/projects/1/
+Accept: application/json
+
+
+###Response
+DELETE http://localhost:8000/api/projects/1/
+
+HTTP/1.1 204 No Content
+Date: Mon, 18 Oct 2021 06:44:20 GMT
+Server: WSGIServer/0.2 CPython/3.9.2
+Vary: Accept, Origin, Cookie
+Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+X-Frame-Options: DENY
+Content-Length: 0
+X-Content-Type-Options: nosniff
+Referrer-Policy: same-origin
+
+<Response body is empty>
+
+Response code: 204 (No Content); Time: 39ms; Content length: 0 bytes
+
+
+
+SELECT *
+FROM mainapp__projects
+WHERE
+    is_active = true
+
+
+# no index on field
+nums = [1, 3, 15]
+print(3 in nums)  # list -> line search -> O(n)
+
+# index on field
+# hash table
+nums = {1, 3, 15}
+print(3 in nums)  # set -> O(1)
