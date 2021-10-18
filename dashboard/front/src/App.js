@@ -11,96 +11,6 @@ import Main from "./components/Main";
 import axios from "axios";
 
 
-const usersMock = [
-    {
-        "id": 1,
-        "username": "kpk",
-        "email": "",
-        "first_name": "",
-        "last_name": "",
-        "gender": "",
-        "date_birth": null
-    },
-    {
-        "id": 2,
-        "username": "user1",
-        "email": "",
-        "first_name": "",
-        "last_name": "",
-        "gender": "",
-        "date_birth": null
-    }
-];
-
-const projectsMock = [
-    {
-        "id": 1,
-        "name": "One",
-        "desc": "draft 1",
-        "created": "2021-09-06T06:13:51.540849Z",
-        "updated": "2021-09-06T06:13:51.540849Z",
-        "owner": 2,
-        "members": [
-            1,
-            2
-        ]
-    },
-    {
-        "id": 2,
-        "name": "Two",
-        "desc": "draft 2",
-        "created": "2021-09-06T06:14:13.029644Z",
-        "updated": "2021-09-06T06:14:13.029644Z",
-        "owner": 1,
-        "members": [
-            1
-        ]
-    }
-];
-
-const projectTasksMock = [
-    {
-        "id": 1,
-        "title": "Initial",
-        "text": "start it",
-        "created": "2021-09-06T06:14:36.197785Z",
-        "updated": "2021-09-06T06:14:36.197785Z",
-        "status": false,
-        "project": 1,
-        "author": 2,
-        "executors": [
-            1
-        ]
-    },
-    {
-        "id": 2,
-        "title": "task 1",
-        "text": "run migrations",
-        "created": "2021-09-06T06:15:01.977061Z",
-        "updated": "2021-09-06T06:15:01.977061Z",
-        "status": false,
-        "project": 1,
-        "author": 1,
-        "executors": [
-            1
-        ]
-    },
-    {
-        "id": 3,
-        "title": "Initial",
-        "text": "start it",
-        "created": "2021-09-06T06:15:18.215955Z",
-        "updated": "2021-09-06T06:15:18.215955Z",
-        "status": false,
-        "project": 2,
-        "author": 2,
-        "executors": [
-            1
-        ]
-    }
-];
-
-
 class App extends React.Component {
     constructor(props) {
         super(props);  // parent constructor
@@ -113,19 +23,32 @@ class App extends React.Component {
 
     componentDidMount() {
         // call rest API
-        // npm install axios
         axios
-            .get("http://localhost:8000/api/users/")
+            .get("http://127.0.0.1:8000/api/users/")
             .then((result) => {
-                console.log('result', result)
+                // console.log('users result:', result)
+                this.setState({
+                    users: result.data
+                })
+            })
+            .catch((error) => console.log(error));
+        axios
+            .get("http://127.0.0.1:8000/api/projects/")
+            .then((result) => {
+                this.setState({
+                    projects: result.data
+                })
+            })
+            .catch((error) => console.log(error));
+        axios
+            .get("http://127.0.0.1:8000/api/project-tasks/")
+            .then((result) => {
+                this.setState({
+                    tasks: result.data
+                })
             })
             .catch((error) => console.log(error));
 
-        this.setState({
-            users: usersMock,
-            projects: projectsMock,
-            tasks: projectTasksMock
-        })
     }
 
     render() {

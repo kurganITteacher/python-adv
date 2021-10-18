@@ -1,0 +1,6 @@
+CORS
+
+django-cors-headers
+https://pypi.org/project/django-cors-headers/
+
+[18/Oct/2021 10:04:06,148] - Broken pipe from ('127.0.0.1', 58177)
