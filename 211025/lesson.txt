@@ -1,0 +1,16 @@
+transaction
+
+creates restore point
+...
+...
+if fails -> rollback
+else -> commit
+
+fat32 VS ntfs
+
+bug_211025.txt
+issue_211025.txt
+
+
+server side rendering (template render: id -> name)
+front side rendering ()

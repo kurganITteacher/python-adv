@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, transaction, DatabaseError
 
 from authapp.models import UserProfile
 
@@ -20,22 +20,17 @@ class Project(models.Model):
     def restore(self):
         self.is_active = True
         self.name = self.name[1:]
-        tasks = self.projecttask_set.all()
-        for task in tasks:
-            task.is_active = True
-            task.save()
+        self.projecttask_set.all().update(is_active=True)
         self.save()
         return self
 
     def delete(self, using=None, keep_parents=False):
         self.is_active = False
-        # tasks = ProjectTask.objects.filter(project=self)
-        tasks = self.projecttask_set.all()
-        for task in tasks:
-            task.is_active = False
-            task.save()
-        self.name = f'_{self.name}'
-        self.save()
+        with transaction.atomic() as _:
+            self.projecttask_set.all().update(is_active=False)  # db level
+            self.name = f'_{self.name}'
+            # raise DatabaseError
+            self.save()
         return 1, {}  # to fix
 
 
@@ -54,6 +49,5 @@ class ProjectTask(models.Model):
 
     def __str__(self):
         return f'{self.project}: {self.title}'
-
 
 # author.tasks.all()
