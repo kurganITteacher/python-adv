@@ -17,8 +17,23 @@ class Project(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+    def restore(self):
+        self.is_active = True
+        self.name = self.name[1:]
+        tasks = self.projecttask_set.all()
+        for task in tasks:
+            task.is_active = True
+            task.save()
+        self.save()
+        return self
+
     def delete(self, using=None, keep_parents=False):
         self.is_active = False
+        # tasks = ProjectTask.objects.filter(project=self)
+        tasks = self.projecttask_set.all()
+        for task in tasks:
+            task.is_active = False
+            task.save()
         self.name = f'_{self.name}'
         self.save()
         return 1, {}  # to fix
@@ -35,7 +50,10 @@ class ProjectTask(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     def __str__(self):
         return f'{self.project}: {self.title}'
+
+
+# author.tasks.all()
