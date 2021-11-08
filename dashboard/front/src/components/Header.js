@@ -24,6 +24,11 @@ function Header() {
                         Tasks
                     </Link>
                 </li>
+                <li className="nav-item">
+                    <Link to={"/login"} className="nav-link">
+                        Login
+                    </Link>
+                </li>
             </ul>
         </header>
     )

@@ -9,6 +9,7 @@ import UserList from "./components/UserList";
 import TaskList from "./components/TaskList";
 import Main from "./components/Main";
 import axios from "axios";
+import LoginForm from "./components/LoginForm";
 
 const API_URL = "http://127.0.0.1:8000";
 const getResourceURL = (suffix) => `${API_URL}/api/${suffix}/`;
@@ -75,6 +76,9 @@ class App extends React.Component {
                     </Route>
                     <Route exact path="/tasks">
                         <TaskList tasks={this.state.tasks}/>
+                    </Route>
+                    <Route exact path="/login">
+                        <LoginForm />
                     </Route>
                 </Router>
                 <Footer/>

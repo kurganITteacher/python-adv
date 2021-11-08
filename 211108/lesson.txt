@@ -20,3 +20,11 @@ pip install requests
 
 response = post(url, data=user_cred)
     {'token': '...'}
+
+http://localhost:3000/login -> http://localhost:8000/api-token-auth/
+
+JS: handleSubmit() -> request redirect
+    handleChange() -> maintain state
+
+<form method="post" onSubmit={this.handleSubmit}>
+
