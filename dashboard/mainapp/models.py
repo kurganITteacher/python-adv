@@ -25,10 +25,10 @@ class Project(models.Model):
         return self
 
     def delete(self, using=None, keep_parents=False):
-        self.is_active = False
         with transaction.atomic() as _:
-            self.projecttask_set.all().update(is_active=False)  # db level
+            self.is_active = False
             self.name = f'_{self.name}'
+            self.projecttask_set.all().update(is_active=False)  # db level
             # raise DatabaseError
             self.save()
         return 1, {}  # to fix

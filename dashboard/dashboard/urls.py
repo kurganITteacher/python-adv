@@ -29,6 +29,8 @@ urlpatterns = [
     path('', mainapp.ProjectList.as_view()),
     path('project/tasks/', mainapp.ProjectTaskList.as_view()),
 
+    path('auth/login/', authapp.MyLogin.as_view(), name='login'),
+
     path('api/', include(router.urls)),
 
     path('admin/', admin.site.urls),

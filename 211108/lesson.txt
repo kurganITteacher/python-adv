@@ -1,0 +1,8 @@
+Auth & Forms
+
+django classic: by session (in db) -> cookie 'sessionid', TTL 14 days
+API case -> by token (in db) 'ke2OjQWjfFL5HvfE' -> cookie
+            by JWT (no db) (JSON Web Token, https://jwt.io/, RFC 7519)
+
+https://www.django-rest-framework.org/api-guide/authentication/
+

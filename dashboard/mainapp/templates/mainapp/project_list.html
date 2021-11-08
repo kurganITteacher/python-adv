@@ -5,6 +5,13 @@
     <title>Projects</title>
 </head>
 <body>
+<div class="user">
+    {% if user.is_authenticated %}
+        {{ user.username }}
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</div>
 {% for project in object_list %}
     {{ project }}
 {% endfor %}
