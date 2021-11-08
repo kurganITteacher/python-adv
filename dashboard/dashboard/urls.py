@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.routers import DefaultRouter
 
 import authapp.views as authapp
@@ -30,6 +31,7 @@ urlpatterns = [
     path('project/tasks/', mainapp.ProjectTaskList.as_view()),
 
     path('auth/login/', authapp.MyLogin.as_view(), name='login'),
+    path('api-token-auth/', obtain_auth_token),
 
     path('api/', include(router.urls)),
 

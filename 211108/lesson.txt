@@ -6,3 +6,17 @@ API case -> by token (in db) 'ke2OjQWjfFL5HvfE' -> cookie
 
 https://www.django-rest-framework.org/api-guide/authentication/
 
+https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication
+
+create tokens
+
+
+from rest_framework.authtoken.views import obtain_auth_token
+path('api-token-auth/', views.obtain_auth_token)
+
+check:
+
+pip install requests
+
+response = post(url, data=user_cred)
+    {'token': '...'}
