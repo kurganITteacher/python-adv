@@ -27,6 +27,7 @@ const Project = ({project}) => {
 
 const ProjectList = ({projects}) => {
     // console.log('projects:', projects);
+    // this.props.projects
     return (
         <div className="project-list">
             <h1>Projects</h1>

@@ -1,4 +1,5 @@
 from django.views.generic import ListView
+from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import ModelViewSet
 
 from mainapp.models import Project, ProjectTask
@@ -14,6 +15,7 @@ class ProjectTaskList(ListView):
 
 
 class ProjectViewSet(ModelViewSet):
+    permission_classes = [AllowAny]
     # queryset = Project.objects.all()
     queryset = Project.objects.filter(is_active=True)
     serializer_class = ProjectSerializer

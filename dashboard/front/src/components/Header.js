@@ -1,7 +1,15 @@
 import {NavLink as Link} from "react-router-dom";
 import React from "react";
 
-function Header() {
+function Header({isAuthenticated, logout}) {
+    let loginLink, loginTitle, loginHandler;
+    loginLink = "/login";
+    loginTitle = "login";
+    if (isAuthenticated) {
+        loginLink = "/logout";
+        loginTitle = "logout";
+        loginHandler = logout;
+    }
     return (
         <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <Link to={"/"}
@@ -25,8 +33,8 @@ function Header() {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to={"/login"} className="nav-link">
-                        Login
+                    <Link to={loginLink} className="nav-link" onClick={loginHandler}>
+                        {loginTitle}
                     </Link>
                 </li>
             </ul>

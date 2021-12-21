@@ -21,14 +21,22 @@ class App extends React.Component {
         this.state = {
             users: [],
             projects: [],
-            tasks: []
+            tasks: [],
+            accessToken: this.getAccessToken(),
         };
+        // bind
     }
 
     componentDidMount() {
+        this.loadState()
+    }
+
+    loadState() {
+        let headers = this.getHeaders();
+
         // call rest API
         axios
-            .get(getResourceURL("users"))
+            .get(getResourceURL("users"), {headers: headers})
             .then((result) => {
                 // console.log('users result:', result)
                 this.setState({
@@ -37,7 +45,7 @@ class App extends React.Component {
             })
             .catch((error) => console.log(error));
         axios
-            .get(getResourceURL("projects"))
+            .get(getResourceURL("projects"), {headers: headers})
             .then((result) => {
                 this.setState({
                     projects: result.data
@@ -45,7 +53,7 @@ class App extends React.Component {
             })
             .catch((error) => console.log(error));
         axios
-            .get(getResourceURL("project-tasks"))
+            .get(getResourceURL("project-tasks"), {headers: headers})
             .then((result) => {
                 this.setState({
                     tasks: result.data
@@ -55,12 +63,69 @@ class App extends React.Component {
 
     }
 
+    login(username, password) {
+        // console.log('do login', username, password);
+        axios
+            .post(getResourceURL("token"),
+                {"username": username, "password": password})
+            .then((result) => {
+                let refreshToken = result.data.refresh;
+                let accessToken = result.data.access;
+                console.log(accessToken)
+
+                this.saveTokens(refreshToken, accessToken)
+                this.setState({accessToken: accessToken}, this.loadState)
+            })
+            .catch((error) => console.log(error));
+    }
+
+    logout() {
+        // console.log('do logout');
+        localStorage.setItem('refreshToken', null);
+        localStorage.setItem('accessToken', null);
+        this.clearState();
+    }
+
+    clearState() {
+        this.setState({
+            accessToken: null,
+            users: [],
+            projects: [],
+            tasks: [],
+        })
+    }
+
+    saveTokens(refreshToken, accessToken) {
+        localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('accessToken', accessToken);
+    }
+
+    getAccessToken() {
+        return localStorage.getItem('accessToken')
+    }
+
+    isAuthenticated() {
+        return this.state.accessToken !== 'null' && this.state.accessToken !== null;
+    }
+
+    getHeaders() {
+        let headers = {
+            'Content-Type': "application/json"
+        }
+        if (this.isAuthenticated()) {
+            headers['Authorization'] = `Bearer ${this.state.accessToken}`
+        }
+
+        return headers;
+    }
+
     render() {
         // console.log('state', this.state);
         return (
             <div className="main">
                 <Router>
-                    <Header/>
+                    <Header isAuthenticated={this.isAuthenticated()}
+                            logout={() => this.logout()}/>
                     <Route exact path="/">
                         <Main/>
                     </Route>
@@ -78,7 +143,8 @@ class App extends React.Component {
                         <TaskList tasks={this.state.tasks}/>
                     </Route>
                     <Route exact path="/login">
-                        <LoginForm />
+                        <LoginForm
+                            login={(username, password) => this.login(username, password)}/>
                     </Route>
                 </Router>
                 <Footer/>

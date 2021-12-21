@@ -1,0 +1,21 @@
+3.2.1
+3.2.3
+3.3.1
+4.0.1
+
+/user/1/
+
+***** JWT **********
+pip install djangorestframework-simplejwt
+
+'rest_framework_simplejwt',
+
+'rest_framework_simplejwt.authentication.JWTAuthentication',
+
+path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
+11:00 next lesson
+
+'Content-Type': 'application/json'
+
