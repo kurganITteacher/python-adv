@@ -1,0 +1,4 @@
+p_obj -> pickle_obj (binary data) -> send -> receive -> unpickle
+
+serialization:
+    p_obj -> str

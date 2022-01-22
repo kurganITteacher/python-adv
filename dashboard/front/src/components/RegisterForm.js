@@ -1,12 +1,14 @@
 import React from "react";
 
 
-class LoginForm extends React.Component {
+class RegisterForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             username: "",
-            password: ""
+            password1: "",
+            password2: "",
+            email: "",
         };
     }
 
@@ -14,12 +16,16 @@ class LoginForm extends React.Component {
         this.setState(
             {[event.target.name]: event.target.value}
         )
-
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.login(this.state.username, this.state.password);
+        this.props.register(
+            this.state.username,
+            this.state.password1,
+            this.state.password2,
+            this.state.email
+        );
     }
 
     render() {
@@ -44,4 +50,4 @@ class LoginForm extends React.Component {
 
 }
 
-export default LoginForm
+export default RegisterForm

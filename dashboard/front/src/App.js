@@ -10,6 +10,7 @@ import TaskList from "./components/TaskList";
 import Main from "./components/Main";
 import axios from "axios";
 import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 
 const API_URL = "http://127.0.0.1:8000";
 const getResourceURL = (suffix) => `${API_URL}/api/${suffix}/`;
@@ -79,6 +80,22 @@ class App extends React.Component {
             .catch((error) => console.log(error));
     }
 
+    register(username, password1, password2, email) {
+        console.log('do register', username, password1, password2, email);
+        // axios
+        //     .post(getResourceURL("token"),
+        //         {"username": username, "password": password})
+        //     .then((result) => {
+        //         let refreshToken = result.data.refresh;
+        //         let accessToken = result.data.access;
+        //         console.log(accessToken)
+        //
+        //         this.saveTokens(refreshToken, accessToken)
+        //         this.setState({accessToken: accessToken}, this.loadState)
+        //     })
+        //     .catch((error) => console.log(error));
+    }
+
     logout() {
         // console.log('do logout');
         localStorage.setItem('refreshToken', null);
@@ -145,6 +162,11 @@ class App extends React.Component {
                     <Route exact path="/login">
                         <LoginForm
                             login={(username, password) => this.login(username, password)}/>
+                    </Route>
+                    <Route exact path="/register">
+                        <RegisterForm
+                            register={(username, password1, password2, email) =>
+                                this.register(username, password1, password2, email)}/>
                     </Route>
                 </Router>
                 <Footer/>
