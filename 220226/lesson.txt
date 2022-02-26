@@ -1,0 +1,59 @@
+Добавление товара в корзину через get_or_create? - yes
+Но перед этим нам нужно получить id самого товара (Формирование корзины), потом проверить добавился ли товар в корзину?
+
+if Basket.objects.filter(user_id=..., product_id=...).exists():
+    basket_inst.update(user_id=..., product_id=..., qty=F('qty') + 1)
+else:
+    Basket.objects.create(user_id=..., product_id=..., qty=1)
+
+
+basket_inst, created = Basket.objects.get_or_create(user_id=..., product_id=...)
+if created:
+    basket_inst.qty = F('qty') + 1
+else:
+    ...
+    basket_inst.qty = F('qty') + 1
+    basket_inst.save()
+    OR
+    basket_inst.update(qty=F('qty') + 1)
+
+
+Редактирование корзины:
+Получается фильтруем по пользователю и на странице должна быть кнопка "Удалить"?
+
+class Basket(...):
+    user = ForeignKey(User, ..., related_name='basket')
+    ...
+
+basket_items = request.user.basket.filter(active=True)  # Basket.objects.filter(user_id=..., active=True)
+
+
+11:25 AIR
+
+
+Просмотр своих заказов:
+Фильтруем по пользователю
+
+Страница каталог:
+1.	Как сделать фильтр?
+
+Регистрация нового клиента:
+1.	Абстрагируемся от AbstractUser
+2.	Как изменить username на login
+3.	И как добавить поле password_repeat (точнее так же изменить)
+
+Оформление заказа:
+1.	Как сделать подтверждение пароля?
+
+Что бы сделать Ajax - нужно же возвращать JsonResponse?
+
+=========================
+
+Чем отличается если мы наследования к пользователю если мы будем использовать OneToOne, AbstractUser, BaseUser
+
+=========================
+
+https://pipenv.pypa.io/en/latest/
+pipenv
+
+=========================
