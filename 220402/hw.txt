@@ -1,0 +1,11 @@
+1. Git
+2. Python basics: list, str, tuple, int, float, dict
+3. Mutabe VS immutable
+4. Function, *args, **kwargs
+5. Iterators, generator
+6. *Decorators
+7. OOP: attribute, method, __init__, super(), mixins, magic methods
+8. Django: create project, settings.py, create app, url namespaces
+9. DRF: serializers, viewsets, routers, API, REST, (SOAP, grpc)
+10. *React
+11. Server side rendering VS single page application
