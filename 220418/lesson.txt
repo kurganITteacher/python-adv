@@ -1,0 +1,43 @@
+path('books/<int:pk>/', books)
+re_path('books/(?P<pk>\d+)/', books)
+
+re_path('books/(?P<username>\w+)/', books)
+
+def books(request, pk):
+    print(type(pk))  # int VS str!!!
+    if pk == 1:
+        pass
+
+slugify -> книга -> kniga
+
+json.dumps(some_p_obj) -> str
+json.dump()
+
+json.loads(some_str) -> p_opj
+json.load()
+
+-----------------------------------------------------------
+haskell -> functional programming VS procedural programming
+go
+
+flutter
+-----------------------------------------------------------
+requests
+
+
+persists -> chunk -> Redis
+IOPs
+
+RAM -> no persistance
+
+CBV
+
+if request.method == 'POST':
+    pass
+
+asyncio
+
+.select_related()
+.prefetch_related()
+
+
